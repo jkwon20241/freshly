@@ -132,7 +132,7 @@
       h('div', { class: 'wrap' }, stage),
       h('div', { class: 'wrap foot-grid' },
         h('div', {}, h('p', { class: 'eyebrow', text: 'Picked. Packed. Blended.' }),
-          h('p', { class: 'fine', text: 'A speculative rebrand and concept website by Jennie Kwon, 2026. A student project. It is not affiliated with Freshly or Nestlé, nothing here is for sale and no orders are placed.' })),
+          h('p', { class: 'fine', text: 'A speculative rebrand and concept website by Jennie Kwon, 2026. It is not affiliated with Freshly or Nestlé, nothing here is for sale and no orders are placed.' })),
         h('nav', { 'aria-label': 'Footer' }, link('index.html', 'Home'), link('menu.html', 'Kits'), link('about.html', 'About'))));
     document.body.append(foot);
     firstView(stage, sign.play);
@@ -170,11 +170,11 @@
   }
 
   /* ---------- interactive type ---------- */
-  // Weight wave: every character's weight swells toward the pointer (Parkinsans is a variable font, 300–800).
-  // The heading pours in once when it first shows, light to heavy; after that it only works while a pointer is over
-  // its section. Each character keeps a fixed-width box, so a weight change repaints that letter and nothing else
+  // Weight wave: characters swell toward the pointer (Parkinsans is a variable font). Headings are always bold:
+  // they rest at 700 and only ever get heavier, up to 800, never lighter. It works while a pointer is over the
+  // heading. Each character keeps a fixed-width box, so a weight change repaints that letter and nothing else
   // moves, and positions are measured once per pointer visit instead of on every frame.
-  function weightWave(el, { rest = 700, peak = 800, low = 300 } = {}) {
+  function weightWave(el, { rest = 700, peak = 800, low = rest } = {}) {
     const words = el.textContent.trim().split(/\s+/);
     el.setAttribute('aria-label', el.textContent.trim());
     el.textContent = ''; el.classList.add('wave');
@@ -185,10 +185,9 @@
       el.append(word); if (wi < words.length - 1) el.append(' ');   // a real space, so lines wrap and never start indented
     });
     if (reduce) return;
-    const cur = chars.map(() => low), goal = chars.map(() => low);
+    const cur = chars.map(() => rest), goal = chars.map(() => rest);
     let raf = 0, spots = null, box = null, pointer = null, locked = false;
     const write = i => chars[i].style.setProperty('--w', Math.round(cur[i]));
-    chars.forEach((ch, i) => write(i));                        // starts light, then pours in
     const frame = () => {
       raf = 0;
       if (pointer) {
@@ -219,7 +218,7 @@
       locked = true; spots = null;
     };
     const fonts = document.fonts ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve();
-    fonts.then(() => { lock(); firstView(el, () => chars.forEach((ch, i) => setTimeout(() => { if (!pointer) { goal[i] = rest; kick(); } }, i * 38)), 0.2); });
+    fonts.then(lock);
     const area = el.closest('section') || el;
     area.addEventListener('pointermove', e => { if (e.pointerType === 'touch' || !locked) return; pointer = [e.pageX, e.pageY]; kick(); });
     area.addEventListener('pointerleave', () => { pointer = null; spots = null; goal.fill(rest); kick(); });

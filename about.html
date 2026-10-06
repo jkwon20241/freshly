@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Mansalva&family=Parkinsans:wght@300..800&display=swap">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=20261005b">
 </head>
 <body>
 
@@ -115,11 +115,24 @@
     </div>
   </section>
 
+  <section class="section on-oat" aria-labelledby="world-title">
+    <div class="wrap" style="display:grid; gap: clamp(22px, 3vw, 40px);">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="eyebrow">In use</p>
+        <h2 id="world-title">Out in the world.</h2>
+        <p class="lede">The identity on a station billboard, a delivery van, a corner shop and a tote. Select a photo to see it larger.</p>
+      </div>
+      <div class="shots" id="shots"></div>
+      <p class="fine-print">Photo mockups, built on templates from Mr.Mockup.</p>
+    </div>
+  </section>
+
   <section class="section on-cucumber" aria-labelledby="credit-title">
     <div class="wrap story">
-      <h2 id="credit-title" style="font-size: clamp(1.8rem, 3.6vw, 3.2rem);">Who made this</h2>
+      <h2 id="credit-title" style="font-size: clamp(1.8rem, 3.6vw, 3.2rem);">Rebranded &amp; Designed by</h2>
       <div>
-        <p class="lede">The rebrand, identity system, packaging, campaign and this website are a self-initiated student project by Jennie Kwon.</p>
+        <p class="credit-name">Jennie Kwon</p>
+        <p class="lede">The rebrand, identity system, packaging, campaign and this website are a self-initiated student project.</p>
         <p>It is speculative. It is not affiliated with Freshly or Nestlé, and nothing here is for sale.</p>
         <p style="margin-top: 1.2em;"><a class="btn" href="https://jennienhynkwon.work/" target="_blank" rel="noopener" style="background: var(--deep); color: var(--oat);">Jennie’s portfolio</a></p>
       </div>
@@ -127,9 +140,11 @@
   </section>
 </main>
 
+<dialog class="lightbox" id="lightbox" aria-label="Photo, larger"></dialog>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="js/assets.js"></script>
-<script src="js/fresh.js"></script>
-<script src="js/about.js"></script>
+<script src="js/assets.js?v=20261005b"></script>
+<script src="js/fresh.js?v=20261005b"></script>
+<script src="js/about.js?v=20261005b"></script>
 </body>
 </html>

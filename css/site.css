@@ -265,6 +265,21 @@ input[type="range"] { width: 100%; accent-color: var(--carrot); height: 28px; }
 .swatch b { font-family: var(--display); font-size: 1.15rem; }
 .swatch span { font-size: .82rem; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
 .doodle-row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(6px, 2vw, 24px); }
+/* mockup photos: a mosaic of 3:2 tiles. The photo zooms inside its frame, so the frame itself never moves. */
+.shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1.2vw, 18px); grid-auto-flow: dense; }
+.shot { all: unset; box-sizing: border-box; position: relative; display: block; aspect-ratio: 3 / 2; min-width: 0; border-radius: var(--radius); overflow: hidden; cursor: zoom-in; background: var(--line); }
+.shot.big { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.shot.tall { grid-row: span 2; aspect-ratio: auto; }
+.shot img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; transition: transform .7s var(--snap); }
+.shot:hover img, .shot:focus-visible img { transform: scale(1.06); }
+.shot:focus-visible { outline: 3px solid var(--carrot); outline-offset: 3px; }
+.shot-tag { position: absolute; left: 12px; bottom: 12px; background: var(--oat); color: var(--deep); border-radius: 999px; padding: 6px 12px; font-weight: 600; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.fine-print { font-size: .82rem; opacity: .8; }
+.credit-name { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 4.6vw, 4.2rem); line-height: 1; letter-spacing: -.025em; margin-bottom: .45em; }
+dialog.lightbox { border: 0; padding: 0; background: transparent; color: var(--oat); max-width: min(1400px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow: visible; }
+dialog.lightbox::backdrop { background: color-mix(in srgb, var(--deep) 86%, transparent); }
+dialog.lightbox img { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 96px); margin-inline: auto; border-radius: var(--radius); }
+dialog.lightbox p { margin-top: 12px; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; }
 .doodle-row .doodle { transition: transform .5s var(--spring); }
 .doodle-row .doodle:hover { transform: rotate(-8deg) scale(1.12); }
 
@@ -319,7 +334,13 @@ input[type="range"] { width: 100%; accent-color: var(--carrot); height: 28px; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 1100px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 860px) { .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .shots { grid-template-columns: minmax(0, 1fr); }
+  .shot.big, .shot.tall { grid-column: auto; grid-row: auto; }
+  .shot.big { aspect-ratio: 3 / 2; } .shot.tall { aspect-ratio: 3 / 4; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; scroll-behavior: auto !important; }
 }

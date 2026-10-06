@@ -1,4 +1,4 @@
-/* About page: the brand grid, the Fresh Cut slider, kinetic type and the type tester, copyable palette, doodles. */
+/* About page: the brand grid, the Fresh Cut slider, kinetic type and the type tester, copyable palette, doodles, mockup photos. */
 (() => {
   const F = window.Fresh, { h, PRODUCE, tok } = F;
   const moving = !F.reduce && window.gsap;
@@ -97,4 +97,36 @@
 
   /* doodles */
   ['mascot', 'carrot', 'bowl', 'lemon', 'kale', 'strawberry'].forEach(n => $('doodles').append(F.doodle(n)));
+
+  /* out in the world: the mockup photos as a mosaic. Two run double size, two stand tall; each opens larger. */
+  const SHOTS = [
+    ['billboard', 'Station billboard', 'A long Freshly billboard hanging in a train station, with the wordmark, an arrow and a sliced orange.', 'big'],
+    ['bus-shelter', 'Bus shelter', 'A Freshly poster with a sliced orange, lit up in a bus shelter at night.', 'tall'],
+    ['stickers', 'Stickers', 'Four round Freshly stickers on a pale surface.', ''],
+    ['tote', 'Market tote', 'A green Freshly tote with yellow handles hanging on a pink wall.', ''],
+    ['courier', 'Courier bag', 'A bike courier carrying a green insulated bag with the stacked Freshly wordmark.', 'tall'],
+    ['van', 'Delivery van', 'A green delivery van with the Freshly wordmark and three yellow arrows on its side.', 'big'],
+    ['bag', 'Carryout bag', 'A green paper carryout bag with the Freshly wordmark running up its side.', ''],
+    ['app-tracking', 'App, order tracking', 'A hand holding a phone that shows a Freshly order arriving tomorrow.', ''],
+    ['posters', 'Wild posting', 'Two Freshly posters on an ivy-covered wall: a stacked wordmark and a large arrow.', ''],
+    ['shop', 'Pop-up shop', 'A dark green shopfront with Freshly signage and a kale leaf poster in the window.', ''],
+    ['tote-echo', 'Echo tote', 'A dark green tote with the echo wordmark in orange, leaning against a kerb.', ''],
+    ['app-menu', 'App, kit menu', 'A hand holding a phone that shows the Freshly kit menu.', ''],
+  ];
+  const box = $('lightbox');
+  for (const [file, label, alt, shape] of SHOTS) {
+    const large = `img/${file}-${shape === 'tall' ? 1200 : 1600}.jpg`;
+    const img = h('img', { src: `img/${file}-800.jpg`, srcset: `img/${file}-800.jpg 800w, ${large} ${shape === 'tall' ? 1200 : 1600}w`,
+      sizes: shape === 'big' ? '(max-width: 860px) 100vw, 50vw' : '(max-width: 560px) 100vw, (max-width: 860px) 50vw, 25vw',
+      alt, loading: 'lazy', decoding: 'async', width: 800, height: shape === 'tall' ? 1067 : 533 });
+    const tile = h('button', { class: 'shot' + (shape ? ' ' + shape : ''), type: 'button', 'aria-haspopup': 'dialog' }, img, h('span', { class: 'shot-tag', text: label }));
+    tile.addEventListener('click', () => {
+      box.replaceChildren(
+        h('button', { class: 'close-x', type: 'button', 'aria-label': 'Close', text: '×', onclick: () => box.close() }),
+        h('img', { src: large, alt }), h('p', { text: label }));
+      box.showModal();
+    });
+    $('shots').append(tile);
+  }
+  box.addEventListener('click', e => { if (e.target === box) box.close(); });   // click on the backdrop
 })();
