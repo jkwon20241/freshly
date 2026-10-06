@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About Freshly</title>
+<meta name="description" content="The story behind the Freshly smoothie kit rebrand, and the identity system you can play with.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Mansalva&family=Parkinsans:wght@300..800&display=swap">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<main>
+  <section class="section on-kale" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="eyebrow">About</p>
+        <h1 id="about-title" style="font-size: clamp(2.6rem, 8.5vw, 8rem); max-width: 11em;">Freshly is back on the menu.</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-oat" aria-labelledby="story-title">
+    <div class="wrap" style="display:grid; gap: clamp(36px, 6vw, 80px);">
+      <div class="story">
+        <div>
+          <h2 id="story-title" style="font-size: clamp(1.8rem, 3.6vw, 3.2rem);">It used to cook dinner.</h2>
+        </div>
+        <div>
+          <p class="lede">Freshly was a New York City food delivery company that brought ready-made meals to doorsteps across the contiguous United States. At its peak it sent out a million meals a week. Nestlé bought it in October 2020, and in January 2023 it shut down.</p>
+          <p>This project imagines it coming back as something lighter: smoothie kits. Whole fruit and vegetables are cut at peak, frozen fast and packed in a cup. You add milk, blend for a minute and drink it.</p>
+          <p>The identity borrows from a New York corner produce stand: crates stacked on the sidewalk, fruit cut open to show it is ripe, a doodle on the price tag.</p>
+        </div>
+      </div>
+      <ol class="timeline" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));">
+        <li><b>NYC</b><span>Started in New York City, delivering across the lower 48.</span></li>
+        <li><b>1M</b><span>Meals a week at its peak.</span></li>
+        <li><b>2020</b><span>Acquired by Nestlé in October.</span></li>
+        <li><b>2023</b><span>Shut down in January.</span></li>
+        <li style="color: var(--carrot);"><b>2026</b><span style="color: var(--deep);">Back, as smoothie kits. This is the speculative part.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section on-deep" aria-labelledby="parts-title">
+    <div class="wrap" style="display:grid; gap: clamp(22px, 3vw, 40px);">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="eyebrow">The system</p>
+        <h2 id="parts-title">Six parts, one stand.</h2>
+        <p class="lede">A wordmark, an orange, a palette, a typeface, a set of icons and a stack. Each one answers the pointer.</p>
+      </div>
+      <div class="stage loose" id="st-bento"><div class="bento" id="bento"></div></div>
+    </div>
+  </section>
+
+  <section class="section on-blossom" aria-labelledby="cut-title">
+    <div class="wrap cutdemo">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="eyebrow">The Fresh Cut</p>
+        <h2 id="cut-title">One cut runs through everything.</h2>
+        <p class="lede">The same slice sits 45% of the way down the orange and every produce icon. It runs along the row by itself; drag the slider to hold it open.</p>
+      </div>
+      <div class="cutline" id="cutline"></div>
+      <label class="range" for="cut-range">Open the cut
+        <input id="cut-range" type="range" min="0" max="100" value="22">
+      </label>
+    </div>
+  </section>
+
+  <section class="section on-oat" aria-labelledby="type-title">
+    <div class="wrap" style="display:grid; gap: 24px;">
+      <div class="type-head">
+        <div class="section-head" style="margin-bottom:0;">
+          <p class="eyebrow">Typography</p>
+          <h2 id="type-title">Type you can pour.</h2>
+          <p class="lede">Parkinsans carries the headlines. Hover the list to roll it faster, then type your own line below, change its weight and run the Fresh Cut through it.</p>
+        </div>
+        <div class="stage on-carrot" id="st-words" role="img" aria-label="A rolling list: picked, packed, poured, blended, sipped, delivered"></div>
+      </div>
+      <div class="tester on-lemon cut" id="tester">
+        <div contenteditable="true" spellcheck="false" id="tester-text" role="textbox" aria-label="Type tester, editable">Pour. Blend. Sip.</div>
+        <div class="tester-controls">
+          <label class="range" for="tw" style="flex: 1 1 220px;">Weight <output id="tw-out">700</output>
+            <input id="tw" type="range" min="300" max="800" value="700">
+          </label>
+          <button class="chip" id="cut-toggle" type="button" aria-pressed="true">Fresh Cut</button>
+          <div class="chips" id="grounds" role="group" aria-label="Background color"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-oat" aria-labelledby="color-title" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Color</p>
+        <h2 id="color-title">Ten colors, named for produce.</h2>
+        <p class="lede">Tap a swatch to copy its hex code.</p>
+      </div>
+      <div class="swatches" id="swatches"></div>
+    </div>
+  </section>
+
+  <section class="section on-deep" aria-labelledby="doodle-title">
+    <div class="wrap" style="display:grid; gap: 30px;">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="eyebrow">Market Doodles</p>
+        <h2 id="doodle-title">Drawn fast, served cold.</h2>
+        <p class="hand" style="font-size: clamp(1.4rem, 2.6vw, 2.2rem); color: var(--lemon);">One marker, one color, a face on anything that can hold one.</p>
+      </div>
+      <div class="doodle-row" id="doodles" style="color: var(--carrot);"></div>
+      <p><a class="btn" href="menu.html">See this week’s kits <svg class="arrow right" viewBox="0 0 100 124" aria-hidden="true"><path d="M 30 0 L 70 0 L 70 64 L 100 64 L 50 124 L 0 64 L 30 64 Z"/></svg></a></p>
+    </div>
+  </section>
+
+  <section class="section on-cucumber" aria-labelledby="credit-title">
+    <div class="wrap story">
+      <h2 id="credit-title" style="font-size: clamp(1.8rem, 3.6vw, 3.2rem);">Who made this</h2>
+      <div>
+        <p class="lede">The rebrand, identity system, packaging, campaign and this website are a self-initiated student project by Jennie Kwon.</p>
+        <p>It is speculative. It is not affiliated with Freshly or Nestlé, and nothing here is for sale.</p>
+        <p style="margin-top: 1.2em;"><a class="btn" href="https://jennienhynkwon.work/" target="_blank" rel="noopener" style="background: var(--deep); color: var(--oat);">Jennie’s portfolio</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/fresh.js"></script>
+<script src="js/about.js"></script>
+</body>
+</html>
