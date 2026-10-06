@@ -273,13 +273,12 @@ input[type="range"] { width: 100%; accent-color: var(--carrot); height: 28px; }
 .shot img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; transition: transform .7s var(--snap); }
 .shot:hover img, .shot:focus-visible img { transform: scale(1.06); }
 .shot:focus-visible { outline: 3px solid var(--carrot); outline-offset: 3px; }
-.shot-tag { position: absolute; left: 12px; bottom: 12px; background: var(--oat); color: var(--deep); border-radius: 999px; padding: 6px 12px; font-weight: 600; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 .fine-print { font-size: .82rem; opacity: .8; }
 .credit-name { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 4.6vw, 4.2rem); line-height: 1; letter-spacing: -.025em; margin-bottom: .45em; }
 dialog.lightbox { border: 0; padding: 0; background: transparent; color: var(--oat); max-width: min(1400px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow: visible; }
 dialog.lightbox::backdrop { background: color-mix(in srgb, var(--deep) 86%, transparent); }
-dialog.lightbox img { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 96px); margin-inline: auto; border-radius: var(--radius); }
-dialog.lightbox p { margin-top: 12px; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; }
+dialog.lightbox img { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 48px); margin-inline: auto; border-radius: var(--radius); }
+
 .doodle-row .doodle { transition: transform .5s var(--spring); }
 .doodle-row .doodle:hover { transform: rotate(-8deg) scale(1.12); }
 
