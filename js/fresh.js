@@ -118,9 +118,10 @@
     const head = h('header', { class: 'site-head' },
       h('a', { class: 'brand', href: 'index.html', 'aria-label': 'Freshly home' }, wordmark()),
       h('nav', { 'aria-label': 'Main' }, link('menu.html', 'Kits'), link('about.html', 'About'), pill));
-    /* said up front on every page, not only in the footer: this is concept work, not the real company */
-    const note = h('p', { class: 'concept-note', role: 'note' }, h('span', { text: 'Concept project by Jennie Kwon' }), h('span', { text: 'Not affiliated with Freshly or Nestlé' }));
-    document.body.prepend(note, head);
+    /* Kits and About say up front that this is concept work, not the real company. The landing page leaves the
+       strip off (its hero stays clean); the footer there carries the same statement. */
+    const note = current === 'index.html' ? null : h('p', { class: 'concept-note', role: 'note' }, h('span', { text: 'Concept project by Jennie Kwon' }), h('span', { text: 'Not affiliated with Freshly or Nestlé' }));
+    document.body.prepend(...[note, head].filter(Boolean));
     const sync = () => { const n = pill.querySelector('.n'); const c = Box.count(); if (n.textContent !== String(c)) { n.textContent = c; pill.classList.remove('bump'); void pill.offsetWidth; pill.classList.add('bump'); } };
     document.addEventListener('box:change', sync); sync(); pill.classList.remove('bump');
 
