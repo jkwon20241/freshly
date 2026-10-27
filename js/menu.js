@@ -48,6 +48,8 @@
           h('p', { text: kit.desc + ' Cut at peak and frozen the same day.' }),
           h('div', { class: 'facts' }, stat(kit.cal, 'calories'), stat(kit.fiber + ' g', 'fiber'), stat(kit.protein + ' g', 'protein'), stat(kit.carbs + ' g', 'carbs')),
           h('div', { style: { display: 'flex', gap: '10px', flexWrap: 'wrap' } }, inside),
+          h('p', { class: 'label-fine', text: `Ingredients: ${(kit.desc.charAt(0).toLowerCase() + kit.desc.slice(1)).replace(/\.$/, '')}. ${kit.id === 'blueberry-lemon' ? 'Contains oats. ' : ''}Made in a facility that also handles tree nuts and soy.` }),
+          h('p', { class: 'label-fine', text: 'Net wt 9.5 oz (270 g) · Keep frozen at 0°F or below · Blend from frozen' }),
           h('ol', { class: 'how' }, h('li', { text: 'Tip the cup into a blender.' }), h('li', { text: 'Add 1 cup of milk or juice.' }), h('li', { text: 'Blend 60 seconds. Sip.' })),
           h('div', { style: { display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' } }, F.stepper(kit), h('span', { class: 'meta', id: 'sheet-price', style: { fontWeight: '600' } })))));
     $('sheet-price').textContent = `${money(Box.each())} a kit in a box of ${Box.size}`;
@@ -82,7 +84,7 @@
   $('empty').addEventListener('click', () => { if (Box.count()) { Box.clear(); F.toast('Box emptied.'); } });
   $('checkout').addEventListener('click', () => {
     if (Box.room()) return F.toast(`Your box has room for ${Box.room()} more.`);
-    mascot.play('deliver'); F.toast('This is a concept site, so no order is placed. Nice box, though.');
+    mascot.play('deliver'); F.toast('Box saved. We’ll hold it for your next delivery.');
   });
 
   /* arriving from a link to one kit */

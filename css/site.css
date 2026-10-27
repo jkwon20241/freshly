@@ -337,3 +337,5 @@ input[type="range"] { width: 100%; accent-color: var(--carrot); height: 28px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; scroll-behavior: auto !important; }
 }
+
+.label-fine { font-size: .82rem; line-height: 1.45; opacity: .78; max-width: 46ch; }

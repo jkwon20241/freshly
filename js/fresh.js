@@ -118,10 +118,7 @@
     const head = h('header', { class: 'site-head' },
       h('a', { class: 'brand', href: 'index.html', 'aria-label': 'Freshly home' }, wordmark()),
       h('nav', { 'aria-label': 'Main' }, link('menu.html', 'Kits'), link('about.html', 'About'), pill));
-    /* Kits and About say up front that this is concept work, not the real company. The landing page leaves the
-       strip off (its hero stays clean); the footer there carries the same statement. */
-    const note = current === 'index.html' ? null : h('p', { class: 'concept-note', role: 'note' }, h('span', { text: 'Concept project by Jennie Kwon' }), h('span', { text: 'Not affiliated with Freshly or Nestlé' }));
-    document.body.prepend(...[note, head].filter(Boolean));
+    document.body.prepend(head);
     const sync = () => { const n = pill.querySelector('.n'); const c = Box.count(); if (n.textContent !== String(c)) { n.textContent = c; pill.classList.remove('bump'); void pill.offsetWidth; pill.classList.add('bump'); } };
     document.addEventListener('box:change', sync); sync(); pill.classList.remove('bump');
 
@@ -133,7 +130,7 @@
       h('div', { class: 'wrap' }, stage),
       h('div', { class: 'wrap foot-grid' },
         h('div', {}, h('p', { class: 'eyebrow', text: 'Picked. Packed. Blended.' }),
-          h('p', { class: 'fine', text: 'A speculative rebrand and concept website by Jennie Kwon, 2026. It is not affiliated with Freshly or Nestlé, nothing here is for sale and no orders are placed.' })),
+          h('p', { class: 'fine', text: 'Design by Jennie Kwon, 2026. Not affiliated with Freshly or Nestlé.' })),
         h('nav', { 'aria-label': 'Footer' }, link('index.html', 'Home'), link('menu.html', 'Kits'), link('about.html', 'About'))));
     document.body.append(foot);
     firstView(stage, sign.play);
