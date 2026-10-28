@@ -130,8 +130,9 @@
       h('div', { class: 'wrap' }, stage),
       h('div', { class: 'wrap foot-grid' },
         h('div', {}, h('p', { class: 'eyebrow', text: 'Picked. Packed. Blended.' }),
-          h('p', { class: 'fine', text: 'Design by Jennie Kwon, 2026. Not affiliated with Freshly or Nestlé.' })),
-        h('nav', { 'aria-label': 'Footer' }, link('index.html', 'Home'), link('menu.html', 'Kits'), link('about.html', 'About'))));
+          h('p', { class: 'fine', text: current === 'about.html' ? 'Not affiliated with Freshly or Nestlé.' : 'Design by Jennie Kwon, 2026. Not affiliated with Freshly or Nestlé.' })),
+        h('nav', { 'aria-label': 'Footer' }, link('index.html', 'Home'), link('menu.html', 'Kits'), link('about.html', 'About'))),
+      current === 'about.html' ? h('div', { class: 'wrap' }, h('p', { class: 'foot-credit' }, 'Designed by Jennie Kwon · ', h('a', { href: 'https://www.jennienhynkwon.work/', target: '_blank', rel: 'noopener', text: 'jennienhynkwon.work ↗' }))) : null);
     document.body.append(foot);
     firstView(stage, sign.play);
   }
